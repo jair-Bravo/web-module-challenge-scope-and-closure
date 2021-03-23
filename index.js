@@ -62,9 +62,9 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(number){
-  return Math.floor((Math.random()*2) + 1);
-  // return math.floor((Math.random))
+function inning(num){
+  // return Math.floor((Math.random()*2) + 1);
+  return Math.floor(Math.random() * 3);
 }
 
 
@@ -83,14 +83,14 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(inn, played){
+function finalScore(inning, num){
   let homeScore = 0;
-  let awayScore;
-  for (let i = 0; i < played; i++){
-    homeScore += inn();
-    awayScore += inn();
+  let awayScore = 0;
+  for (let i = 0; i < num; i++){
+    homeScore += inning();
+    awayScore += inning();
   }
-  let total = {"home": homeScore, "away": awayScore}
+  let total = {"Home": homeScore, "Away": awayScore}
   return total; 
 }
 console.log(finalScore(inning,9));
@@ -149,8 +149,22 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(cBGetInningScore,cBinning, number) {
+    let newArray = [];
+    let homeScore = 0;
+    let awayScore = 0;
+    for (let i = 1; i < number; i++) {
+      homeScore = homeScore + cBGetInningScore(cBinning);
+      awayScore = awayScore + cBinningingScore(cBinning);
+      newArray.push(`inning ${i}: Away ${awayScore} - Home ${homeScore}`) 
+    }
+    if (homeScore > awayScore || homeScore < awayScore) {
+      newArray.push(`Final Score: Away ${awayScore} - Home ${homeScore}`)
+    } else  {
+      newArray.push(`This game will require extra innings: Away ${awayScore} - Home ${homeScore}`)
+    }
+    return newArray;
+  
 }
 
 
